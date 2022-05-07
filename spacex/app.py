@@ -8,7 +8,7 @@ app = Flask(__name__)
 def hello_world():
     with urllib.request.urlopen("https://api.spacexdata.com/v3/dragons/dragon1") as url:
         data = json.loads(url.read().decode())
-    return data["heat_shield"]
+    return data
 
 
 if __name__ == "__main__":
