@@ -16,12 +16,14 @@ class App:
         self.mins = self.diff.minute
         self.secs = self.diff.second
 
+
     def refresh(self):
         self.diff = self.get_time_till_launch()
         self.js.document.getElementById('days').innerHTML = self.diff.day
         self.js.document.getElementById('hours').innerHTML = self.diff.hour
         self.js.document.getElementById('mins').innerHTML = self.diff.minute
         self.js.document.getElementById('secs').innerHTML = self.diff.second
+
 
     def get_time_till_launch(self):
         with urllib.request.urlopen("https://api.spacexdata.com/v5/launches/next") as url:
@@ -36,9 +38,10 @@ class App:
 
         return diff
 
+
 @app.route("/", methods=["GET","POST"])
 def home():
-    return App.render(render_template('index.html'))#, days=App.days, hours=App.hours, mins=App.mins, secs=App.secs))
+    return App.render(render_template('index.html'))
 
 
 if __name__ == "__main__":
